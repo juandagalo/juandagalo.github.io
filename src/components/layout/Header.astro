@@ -3,6 +3,7 @@ import type { Lang } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import LanguageSwitcher from "@/components/shared/LanguageSwitcher.astro";
+import ThemeToggle from "@/components/shared/ThemeToggle.astro";
 
 interface Props {
   lang: Lang;
@@ -22,7 +23,7 @@ const navLinks = [
 ];
 ---
 
-<header class="border-b border-gray-200">
+<header class="border-b border-gray-200 dark:border-gray-800">
   <nav class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
     <a href={getRelativeLocaleUrl(lang, "/")} class="text-xl font-bold">
       JDG
@@ -33,25 +34,26 @@ const navLinks = [
       for="menu-toggle"
       class="md:hidden cursor-pointer flex flex-col gap-1.5"
     >
-      <span class="block w-6 h-0.5 bg-gray-900"></span>
-      <span class="block w-6 h-0.5 bg-gray-900"></span>
-      <span class="block w-6 h-0.5 bg-gray-900"></span>
+      <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
+      <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
+      <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
     </label>
 
     <div
-      class="hidden peer-checked:flex md:flex flex-col md:flex-row items-center gap-6 absolute md:static top-16 left-0 right-0 bg-white md:bg-transparent border-b md:border-0 border-gray-200 px-4 md:px-0 py-4 md:py-0 z-50"
+      class="hidden peer-checked:flex md:flex flex-col md:flex-row items-center gap-6 absolute md:static top-16 left-0 right-0 bg-white dark:bg-gray-950 md:bg-transparent border-b md:border-0 border-gray-200 dark:border-gray-800 px-4 md:px-0 py-4 md:py-0 z-50"
     >
       {
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-gray-600 hover:text-gray-900 transition-colors"
+            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
           >
             {link.label}
           </a>
         ))
       }
       <LanguageSwitcher />
+      <ThemeToggle />
     </div>
   </nav>
 </header>
