@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import type { Lang } from "@/i18n/ui";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
@@ -44,6 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         document.documentElement.classList.add("dark");
       }
     </script>
+    <ClientRouter />
   </head>
   <body
     class="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors"
