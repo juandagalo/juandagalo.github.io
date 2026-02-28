@@ -5,11 +5,7 @@ import { useTranslations } from "@/i18n/utils";
 const t = useTranslations("en");
 ---
 
-<BaseLayout
-  title="Juan Daniel Garcia Lopez"
-  description={t("hero.tagline")}
-  lang="en"
->
+<BaseLayout title={t("hero.name")} description={t("hero.tagline")} lang="en">
   <section class="mx-auto max-w-5xl px-4 py-20">
     <p class="text-lg text-gray-500">{t("hero.greeting")}</p>
     <h1 class="text-4xl font-bold mt-2">{t("hero.name")}</h1>

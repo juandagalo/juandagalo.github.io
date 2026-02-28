@@ -34,6 +34,7 @@ export const ui = {
     "footer.sourceCode": "Source code",
     "footer.rights": "All rights reserved.",
     "lang.switch": "Español",
+    "theme.toggle": "Toggle theme",
   },
   es: {
     "nav.home": "Inicio",
@@ -61,6 +62,7 @@ export const ui = {
     "footer.sourceCode": "Código fuente",
     "footer.rights": "Todos los derechos reservados.",
     "lang.switch": "English",
+    "theme.toggle": "Cambiar tema",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 

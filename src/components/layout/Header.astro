@@ -33,6 +33,7 @@ const navLinks = [
     <label
       for="menu-toggle"
       class="md:hidden cursor-pointer flex flex-col gap-1.5"
+      aria-label="Toggle menu"
     >
       <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
       <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
@@ -53,7 +54,7 @@ const navLinks = [
         ))
       }
       <LanguageSwitcher />
-      <ThemeToggle />
+      <ThemeToggle lang={lang} />
     </div>
   </nav>
 </header>
