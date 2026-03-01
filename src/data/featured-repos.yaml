@@ -1,6 +1,6 @@
 - repo: llm-trabajo-final-hv-search
   description_en: "AI-powered resume search system using LLMs for semantic matching and ranking"
-  description_es: "Sistema de busqueda de CVs impulsado por IA usando LLMs para coincidencia semantica"
+  description_es: "Sistema de búsqueda de CVs impulsado por IA usando LLMs para coincidencia semántica"
   order: 1
   category: ai
   active: true
@@ -9,13 +9,13 @@
     - LLM-powered ranking
     - REST API interface
   highlights_es:
-    - Busqueda semantica con embeddings
+    - Búsqueda semántica con embeddings
     - Ranking impulsado por LLM
     - Interfaz API REST
 
 - repo: flight-report-agent
   description_en: "Autonomous agent that generates flight status reports using real-time data"
-  description_es: "Agente autonomo que genera reportes de estado de vuelos usando datos en tiempo real"
+  description_es: "Agente autónomo que genera reportes de estado de vuelos usando datos en tiempo real"
   order: 2
   category: ai
   active: true
@@ -24,13 +24,13 @@
     - Real-time data integration
     - Automated report generation
   highlights_es:
-    - Arquitectura de agente autonomo
-    - Integracion de datos en tiempo real
-    - Generacion automatizada de reportes
+    - Arquitectura de agente autónomo
+    - Integración de datos en tiempo real
+    - Generación automatizada de reportes
 
 - repo: langraph-travel-recommendation
   description_en: "Travel recommendation system built with LangGraph for multi-step reasoning"
-  description_es: "Sistema de recomendacion de viajes construido con LangGraph para razonamiento multi-paso"
+  description_es: "Sistema de recomendación de viajes construido con LangGraph para razonamiento multi-paso"
   order: 3
   category: ai
   active: true
@@ -45,7 +45,7 @@
 
 - repo: dsenproduccion
   description_en: "Data science project focused on production-ready ML pipelines"
-  description_es: "Proyecto de ciencia de datos enfocado en pipelines de ML listos para produccion"
+  description_es: "Proyecto de ciencia de datos enfocado en pipelines de ML listos para producción"
   order: 4
   category: data
   active: true
@@ -54,8 +54,8 @@
     - Data preprocessing automation
     - Model deployment strategies
   highlights_es:
-    - Pipelines de ML en produccion
-    - Automatizacion de preprocesamiento
+    - Pipelines de ML en producción
+    - Automatización de preprocesamiento
     - Estrategias de despliegue de modelos
 
 - repo: model-masters-deployment
@@ -70,5 +70,5 @@
     - Performance monitoring
   highlights_es:
     - Versionamiento de modelos
-    - Automatizacion de despliegue
+    - Automatización de despliegue
     - Monitoreo de rendimiento

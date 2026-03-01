@@ -1,6 +1,6 @@
 - repo: awesome-project
   description_en: "An awesome full-stack project"
-  description_es: "Un proyecto full-stack increible"
+  description_es: "Un proyecto full-stack increíble"
   order: 1
   category: web
   active: true
@@ -13,7 +13,7 @@
 
 - repo: ml-pipeline
   description_en: "Production ML pipeline"
-  description_es: "Pipeline de ML en produccion"
+  description_es: "Pipeline de ML en producción"
   order: 2
   category: data
   active: true
