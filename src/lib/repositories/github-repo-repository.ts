@@ -14,8 +14,10 @@ export function createGitHubRepoRepository(
         headers.Authorization = `Bearer ${token}`;
       }
 
+      const encodedUsername = encodeURIComponent(username);
+
       const response = await fetch(
-        `https://api.github.com/users/${username}/repos?per_page=100&sort=updated&type=owner`,
+        `https://api.github.com/users/${encodedUsername}/repos?per_page=100&sort=updated&type=owner`,
         { headers },
       );
 
