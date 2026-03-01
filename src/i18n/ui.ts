@@ -14,7 +14,7 @@ export const ui = {
     "nav.blog": "Blog",
     "nav.about": "About",
     "hero.greeting": "Hi, I'm",
-    "hero.name": "Juan David Galo",
+    "hero.name": "Juan Daniel Garcia Lopez",
     "hero.tagline": "Full-Stack Developer & Creative Technologist",
     "hero.cta.projects": "View my work",
     "hero.cta.contact": "Get in touch",
@@ -34,6 +34,8 @@ export const ui = {
     "footer.sourceCode": "Source code",
     "footer.rights": "All rights reserved.",
     "lang.switch": "Español",
+    "theme.toggle": "Toggle theme",
+    "nav.toggleMenu": "Toggle menu",
   },
   es: {
     "nav.home": "Inicio",
@@ -41,7 +43,7 @@ export const ui = {
     "nav.blog": "Blog",
     "nav.about": "Sobre mí",
     "hero.greeting": "Hola, soy",
-    "hero.name": "Juan David Galo",
+    "hero.name": "Juan Daniel Garcia Lopez",
     "hero.tagline": "Desarrollador Full-Stack & Tecnólogo Creativo",
     "hero.cta.projects": "Ver mi trabajo",
     "hero.cta.contact": "Contáctame",
@@ -61,6 +63,8 @@ export const ui = {
     "footer.sourceCode": "Código fuente",
     "footer.rights": "Todos los derechos reservados.",
     "lang.switch": "English",
+    "theme.toggle": "Cambiar tema",
+    "nav.toggleMenu": "Abrir menú",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 
