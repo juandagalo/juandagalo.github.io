@@ -1,9 +1,12 @@
+import type { PostEntry } from "../types/blog";
 import type { EnrichedRepo } from "../types/domain";
 import type {
   CompactProjectDTO,
   FeaturedProjectDTO,
   PostSummaryDTO,
 } from "../types/dto";
+
+export type { PostEntry };
 
 export function toFeaturedDTO(repo: EnrichedRepo): FeaturedProjectDTO {
   return {
@@ -27,17 +30,6 @@ export function toCompactDTO(repo: EnrichedRepo): CompactProjectDTO {
     description: repo.description,
     language: repo.language,
     stars: repo.stars,
-  };
-}
-
-export interface PostEntry {
-  id: string;
-  slug: string;
-  data: {
-    title: string;
-    description: string;
-    date: Date;
-    tags: string[];
   };
 }
 

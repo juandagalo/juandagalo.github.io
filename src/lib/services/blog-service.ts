@@ -28,12 +28,18 @@ function defaultReadingTime(body: string): number {
 export function createBlogService(deps: BlogServiceDeps) {
   const { getCollection, estimateReadingTime = defaultReadingTime } = deps;
 
-  async function getFilteredPosts(lang: string): Promise<PostSummaryDTO[]> {
+  async function getFilteredPosts(
+    lang: string,
+    limit?: number,
+  ): Promise<PostSummaryDTO[]> {
     const posts = await getCollection();
-    return posts
+    const sorted = posts
       .filter((post) => post.data.lang === lang && !post.data.draft)
-      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-      .map((post) => toPostSummaryDTO(post, estimateReadingTime(post.body)));
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    const sliced = limit != null ? sorted.slice(0, limit) : sorted;
+    return sliced.map((post) =>
+      toPostSummaryDTO(post, estimateReadingTime(post.body)),
+    );
   }
 
   return {
@@ -45,8 +51,7 @@ export function createBlogService(deps: BlogServiceDeps) {
       lang: string,
       limit: number,
     ): Promise<PostSummaryDTO[]> {
-      const posts = await getFilteredPosts(lang);
-      return posts.slice(0, limit);
+      return getFilteredPosts(lang, limit);
     },
   };
 }
