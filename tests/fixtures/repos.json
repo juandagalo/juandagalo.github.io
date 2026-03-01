@@ -1,0 +1,68 @@
+[
+  {
+    "name": "awesome-project",
+    "html_url": "https://github.com/testuser/awesome-project",
+    "description": "An awesome project",
+    "language": "TypeScript",
+    "stargazers_count": 42,
+    "topics": ["web", "typescript"],
+    "updated_at": "2025-06-01T00:00:00Z",
+    "fork": false,
+    "homepage": "https://awesome.dev"
+  },
+  {
+    "name": "ml-pipeline",
+    "html_url": "https://github.com/testuser/ml-pipeline",
+    "description": "Machine learning pipeline",
+    "language": "Python",
+    "stargazers_count": 18,
+    "topics": ["ml", "data"],
+    "updated_at": "2025-05-15T00:00:00Z",
+    "fork": false,
+    "homepage": null
+  },
+  {
+    "name": "forked-lib",
+    "html_url": "https://github.com/testuser/forked-lib",
+    "description": "A forked library",
+    "language": "JavaScript",
+    "stargazers_count": 100,
+    "topics": [],
+    "updated_at": "2025-04-01T00:00:00Z",
+    "fork": true,
+    "homepage": null
+  },
+  {
+    "name": "testuser.github.io",
+    "html_url": "https://github.com/testuser/testuser.github.io",
+    "description": "Portfolio site",
+    "language": "Astro",
+    "stargazers_count": 5,
+    "topics": ["portfolio"],
+    "updated_at": "2025-06-10T00:00:00Z",
+    "fork": false,
+    "homepage": "https://testuser.github.io"
+  },
+  {
+    "name": "rust-cli",
+    "html_url": "https://github.com/testuser/rust-cli",
+    "description": "CLI tool in Rust",
+    "language": "Rust",
+    "stargazers_count": 7,
+    "topics": ["cli", "rust"],
+    "updated_at": "2025-03-20T00:00:00Z",
+    "fork": false,
+    "homepage": null
+  },
+  {
+    "name": "data-viz",
+    "html_url": "https://github.com/testuser/data-viz",
+    "description": null,
+    "language": null,
+    "stargazers_count": 0,
+    "topics": [],
+    "updated_at": "2025-01-10T00:00:00Z",
+    "fork": false,
+    "homepage": null
+  }
+]
