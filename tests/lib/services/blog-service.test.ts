@@ -128,6 +128,31 @@ describe("createBlogService", () => {
     expect(enPosts[1].readingTime).toBe(5);
   });
 
+  it("returns 0 reading time for empty body", async () => {
+    const emptyBodyPost: BlogEntry[] = [
+      {
+        id: "en-empty",
+        slug: "empty-body",
+        body: "   ",
+        data: {
+          title: "Empty",
+          description: "Empty body",
+          date: new Date("2025-06-01"),
+          tags: [],
+          lang: "en",
+        },
+      },
+    ];
+
+    const service = createBlogService({
+      getCollection: createMockCollection(emptyBodyPost),
+    });
+
+    const enPosts = await service.getPostsByLang("en");
+
+    expect(enPosts[0].readingTime).toBe(0);
+  });
+
   it("returns empty array for language with no posts", async () => {
     const service = createBlogService({
       getCollection: createMockCollection(posts),

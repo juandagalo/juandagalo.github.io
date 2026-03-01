@@ -10,7 +10,11 @@ export interface BlogServiceDeps {
 }
 
 function defaultReadingTime(body: string): number {
-  const words = body.split(/\s+/).length;
+  const trimmed = body.trim();
+  if (!trimmed) {
+    return 0;
+  }
+  const words = trimmed.split(/\s+/).length;
   return Math.ceil(words / 200);
 }
 
