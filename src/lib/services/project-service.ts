@@ -1,11 +1,11 @@
-import type { ConfigSource } from "../config/config-source";
-import type { EnrichedRepo } from "../types/domain";
-import type { CompactProjectDTO, FeaturedProjectDTO } from "../types/dto";
-import type { RepoRepository } from "../repositories/repo-repository";
-import type { SortStrategy } from "../strategies/sort";
-import { sortByOrder, sortByUpdated } from "../strategies/sort";
-import { enrichRepos } from "../mappers/repo-mapper";
-import { toCompactDTO, toFeaturedDTO } from "../mappers/dto-mapper";
+import type { ConfigSource } from "@/lib/config/config-source";
+import type { EnrichedRepo } from "@/lib/types/domain";
+import type { CompactProjectDTO, FeaturedProjectDTO } from "@/lib/types/dto";
+import type { RepoRepository } from "@/lib/repositories/repo-repository";
+import type { SortStrategy } from "@/lib/strategies/sort";
+import { sortByOrder, sortByUpdated } from "@/lib/strategies/sort";
+import { enrichRepos } from "@/lib/mappers/repo-mapper";
+import { toCompactDTO, toFeaturedDTO } from "@/lib/mappers/dto-mapper";
 
 export interface ProjectServiceDeps {
   repoRepository: RepoRepository;

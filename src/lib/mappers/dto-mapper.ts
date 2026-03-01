@@ -1,10 +1,10 @@
-import type { PostEntry } from "../types/blog";
-import type { EnrichedRepo } from "../types/domain";
+import type { PostEntry } from "@/lib/types/blog";
+import type { EnrichedRepo } from "@/lib/types/domain";
 import type {
   CompactProjectDTO,
   FeaturedProjectDTO,
   PostSummaryDTO,
-} from "../types/dto";
+} from "@/lib/types/dto";
 
 export type { PostEntry };
 

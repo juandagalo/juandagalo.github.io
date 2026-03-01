@@ -1,19 +1,8 @@
-import type { PostSummaryDTO } from "../types/dto";
-import { toPostSummaryDTO } from "../mappers/dto-mapper";
+import type { PostSummaryDTO } from "@/lib/types/dto";
+import type { BlogEntry } from "@/lib/types/blog";
+import { toPostSummaryDTO } from "@/lib/mappers/dto-mapper";
 
-export interface BlogEntry {
-  id: string;
-  slug: string;
-  body: string;
-  data: {
-    title: string;
-    description: string;
-    date: Date;
-    tags: string[];
-    draft?: boolean;
-    lang: string;
-  };
-}
+export type { BlogEntry };
 
 export interface BlogServiceDeps {
   getCollection: () => Promise<BlogEntry[]>;

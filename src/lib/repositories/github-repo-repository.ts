@@ -1,5 +1,5 @@
-import type { GitHubRepo } from "../types/github";
-import type { RepoRepository } from "./repo-repository";
+import type { GitHubRepo } from "@/lib/types/github";
+import type { RepoRepository } from "@/lib/repositories/repo-repository";
 
 export function createGitHubRepoRepository(
   username: string,

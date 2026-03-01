@@ -1,6 +1,6 @@
-import type { FeaturedRepoConfig } from "../types/config";
-import type { EnrichedRepo } from "../types/domain";
-import type { GitHubRepo } from "../types/github";
+import type { FeaturedRepoConfig } from "@/lib/types/config";
+import type { EnrichedRepo } from "@/lib/types/domain";
+import type { GitHubRepo } from "@/lib/types/github";
 
 export function enrichRepos(
   apiRepos: GitHubRepo[],

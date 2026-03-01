@@ -1,13 +1,13 @@
-import { createGitHubRepoRepository } from "./repositories/github-repo-repository";
-import { createYamlConfigSource } from "./config/yaml-config-source";
-import { createProjectService } from "./services/project-service";
+import { createGitHubRepoRepository } from "@/lib/repositories/github-repo-repository";
+import { createYamlConfigSource } from "@/lib/config/yaml-config-source";
+import { createProjectService } from "@/lib/services/project-service";
 
 export type {
   FeaturedProjectDTO,
   CompactProjectDTO,
   PostSummaryDTO,
-} from "./types/dto";
-export type { EnrichedRepo } from "./types/domain";
+} from "@/lib/types/dto";
+export type { EnrichedRepo } from "@/lib/types/domain";
 
 export async function getProjectData() {
   const username = import.meta.env.GITHUB_USERNAME?.trim() || "juandagalo";

@@ -8,3 +8,11 @@ export interface PostEntry {
     tags: string[];
   };
 }
+
+export interface BlogEntry extends PostEntry {
+  body: string;
+  data: PostEntry["data"] & {
+    draft?: boolean;
+    lang: string;
+  };
+}
