@@ -1,0 +1,26 @@
+- repo: awesome-project
+  description_en: "An awesome full-stack project"
+  description_es: "Un proyecto full-stack increible"
+  order: 1
+  category: web
+  active: true
+  highlights_en:
+    - Full-stack TypeScript
+    - Real-time features
+  highlights_es:
+    - TypeScript full-stack
+    - Funciones en tiempo real
+
+- repo: ml-pipeline
+  description_en: "Production ML pipeline"
+  description_es: "Pipeline de ML en produccion"
+  order: 2
+  category: data
+  active: true
+
+- repo: old-project
+  description_en: "Legacy project"
+  description_es: "Proyecto legado"
+  order: 3
+  category: web
+  active: false
