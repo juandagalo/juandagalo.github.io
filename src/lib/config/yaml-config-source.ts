@@ -1,8 +1,8 @@
 import yaml from "js-yaml";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import type { FeaturedRepoConfig } from "../types/config";
-import type { ConfigSource } from "./config-source";
+import type { FeaturedRepoConfig } from "@/lib/types/config";
+import type { ConfigSource } from "@/lib/config/config-source";
 
 export function createYamlConfigSource(filePath?: string): ConfigSource {
   const defaultPath = fileURLToPath(
