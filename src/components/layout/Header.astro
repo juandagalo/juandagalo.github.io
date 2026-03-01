@@ -15,11 +15,11 @@ const t = useTranslations(lang);
 const navLinks = [
   { href: getRelativeLocaleUrl(lang, "/"), label: t("nav.home") },
   {
-    href: getRelativeLocaleUrl(lang, "projects"),
+    href: getRelativeLocaleUrl(lang, "/projects"),
     label: t("nav.projects"),
   },
-  { href: getRelativeLocaleUrl(lang, "blog"), label: t("nav.blog") },
-  { href: getRelativeLocaleUrl(lang, "about"), label: t("nav.about") },
+  { href: getRelativeLocaleUrl(lang, "/blog"), label: t("nav.blog") },
+  { href: getRelativeLocaleUrl(lang, "/about"), label: t("nav.about") },
 ];
 ---
 
@@ -33,7 +33,7 @@ const navLinks = [
     <label
       for="menu-toggle"
       class="md:hidden cursor-pointer flex flex-col gap-1.5"
-      aria-label="Toggle menu"
+      aria-label={t("nav.toggleMenu")}
     >
       <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
       <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
