@@ -7,52 +7,75 @@ import { useTranslations } from "@/i18n/utils";
 const t = useTranslations("en");
 
 const skills = {
-  [t("about.skills.aiml")]: [
-    "Python",
-    "LangChain",
-    "FAISS",
-    "OpenAI",
-    "Hugging Face",
-    "scikit-learn",
-    "Pandas",
-    "NumPy",
-  ],
-  [t("about.skills.data")]: [
-    "SQL",
-    "PostgreSQL",
-    "MongoDB",
-    "Apache Airflow",
-    "dbt",
-    "Snowflake",
-    "ETL Pipelines",
-  ],
-  [t("about.skills.web")]: [
-    "TypeScript",
-    "Astro",
+  [t("about.skills.languages")]: ["C#", "Python", "PHP", "SQL"],
+  [t("about.skills.frameworks")]: [
+    ".NET",
+    "FastAPI",
+    "Laravel",
+    "Angular",
     "React",
-    "Tailwind CSS",
-    "Node.js",
-    "REST APIs",
-    "GraphQL",
   ],
-  [t("about.skills.tools")]: [
-    "Git",
-    "Docker",
-    "GitHub Actions",
-    "Linux",
-    "VS Code",
-    "Vitest",
-    "ESLint",
+  [t("about.skills.databases")]: ["SQL Server", "Oracle"],
+  [t("about.skills.cloud")]: ["Azure", "GCP", "Azure DevOps", "CI/CD", "Git"],
+  [t("about.skills.data")]: [
+    "ETL",
+    "Data Warehousing",
+    "FAISS",
+    "Web Scraping",
+  ],
+  [t("about.skills.aiml")]: [
+    "LangGraph",
+    "RAG",
+    "OpenAI",
+    "Claude",
+    "Streamlit",
+  ],
+  [t("about.skills.practices")]: [
+    "TDD",
+    "REST APIs",
+    "Database Design",
+    "Agile",
   ],
 };
 
-const education = [
+const experience = [
   {
-    degree: "B.S. Computer Science",
-    institution: "Placeholder University",
-    period: "2018 - 2022",
+    title: "Intermediate Developer (Optimizely & Umbraco)",
+    company: "Nexer Group S.A.S",
+    location: "Medell\u00EDn, Colombia",
+    period: "Feb 2023 - Present",
+    description:
+      "Backend-focused fullstack developer building e-commerce platforms, corporate websites, and headless CMS solutions for B2B clients across Optimizely and Umbraco.",
+  },
+  {
+    title: "Data & Analytics Engineer",
+    company: "Manar (now Datecsa)",
+    location: "Medell\u00EDn, Colombia",
+    period: "Feb 2020 - Feb 2023",
+    description:
+      "Developer and consultant delivering data engineering and BI solutions for enterprise clients, integrating data from Maximo, JD Edwards, SAP, and similar platforms.",
+  },
+  {
+    title: "Database Administrator",
+    company: "VICO",
+    location: "Medell\u00EDn, Colombia",
+    period: "Aug 2018 - Feb 2020",
+    description:
+      "Backend developer evolving into a data-focused role, building core platform features and analytics infrastructure for a growing startup.",
   },
 ];
+
+const education = [
+  {
+    degree: "Master's in Data Science",
+    institution:
+      "Universidad Pontificia Bolivariana \u2014 Medell\u00EDn, Colombia",
+    period: "In progress",
+    detail: "Focus: NLP, machine learning, LLM-based applications",
+  },
+];
+
+const certifications = ["Optimizely Certified Developer"];
 ---
 
 <BaseLayout
@@ -70,6 +93,32 @@ const education = [
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
         {t("about.bio.text")}
       </p>
+    </div>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.experience")} />
+      <div class="space-y-8">
+        {
+          experience.map((job) => (
+            <div class="border-l-2 border-orange-600 dark:border-orange-500 pl-4">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                  {job.title}
+                </h3>
+                <span class="text-sm text-gray-500 dark:text-gray-500 shrink-0">
+                  {job.period}
+                </span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {job.company} &mdash; {job.location}
+              </p>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {job.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
     </div>
 
     <div class="mb-16">
@@ -92,25 +141,46 @@ const education = [
       </div>
     </div>
 
-    <div>
+    <div class="mb-16">
       <SectionTitle text={t("about.education")} />
       <div class="space-y-6">
         {
           education.map((entry) => (
             <div class="border-l-2 border-orange-600 dark:border-orange-500 pl-4">
-              <h3 class="font-semibold text-gray-900 dark:text-gray-100">
-                {entry.degree}
-              </h3>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                  {entry.degree}
+                </h3>
+                <span class="text-sm text-orange-600 dark:text-orange-500 font-medium shrink-0">
+                  {entry.period}
+                </span>
+              </div>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 {entry.institution}
               </p>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                {entry.period}
-              </p>
+              {entry.detail && (
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                  {entry.detail}
+                </p>
+              )}
             </div>
           ))
         }
       </div>
+    </div>
+
+    <div>
+      <SectionTitle text={t("about.certifications")} />
+      <ul class="space-y-2">
+        {
+          certifications.map((cert) => (
+            <li class="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-orange-600 dark:bg-orange-500 shrink-0" />
+              {cert}
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 </BaseLayout>
