@@ -1,0 +1,61 @@
+---
+import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
+
+interface Props {
+  language: string | null;
+  active?: boolean;
+  lang: Lang;
+}
+
+const { language, active = false, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const languageColors: Record<string, string> = {
+  TypeScript:
+    "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
+  Python: "bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300",
+  JavaScript:
+    "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300",
+  Java: "bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300",
+  Rust: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
+  Go: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300",
+  HTML: "bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300",
+  CSS: "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300",
+  Astro: "bg-pink-100 text-pink-800 dark:bg-pink-900/40 dark:text-pink-300",
+};
+
+const defaultColor =
+  "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300";
+const colorClass = language
+  ? (languageColors[language] ?? defaultColor)
+  : defaultColor;
+---
+
+<div class="flex items-center gap-2">
+  {
+    language && (
+      <span
+        class:list={[
+          "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
+          colorClass,
+        ]}
+      >
+        {language}
+      </span>
+    )
+  }
+  {
+    active && (
+      <span
+        class="inline-flex items-center gap-1.5 text-xs text-green-700 dark:text-green-400"
+        aria-label={t("projects.badge.active")}
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-pulse rounded-full bg-green-400 opacity-75" />
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+        </span>
+      </span>
+    )
+  }
+</div>

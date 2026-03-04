@@ -1,0 +1,93 @@
+---
+import type { FeaturedProjectDTO, CompactProjectDTO } from "@/lib/types/dto";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+import ProjectBadge from "./ProjectBadge.astro";
+import Tag from "@/components/shared/Tag.astro";
+
+interface Props {
+  repo: FeaturedProjectDTO | CompactProjectDTO;
+  lang: Lang;
+  variant: "featured" | "compact";
+}
+
+const { repo, lang, variant } = Astro.props;
+const t = useTranslations(lang);
+const description = repo.description[lang];
+const isFeatured = variant === "featured";
+const featured = isFeatured ? (repo as FeaturedProjectDTO) : null;
+---
+
+<a
+  href={repo.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${repo.name} - ${t("projects.viewOnGitHub")}`}
+  class:list={[
+    "group block rounded-lg border transition-colors",
+    "bg-white dark:bg-gray-900",
+    "border-gray-200 dark:border-gray-800",
+    "hover:border-gray-400 dark:hover:border-gray-600",
+    isFeatured
+      ? "p-6 border-l-4 border-l-gray-900 dark:border-l-gray-100"
+      : "p-4",
+  ]}
+>
+  <div class="flex items-start justify-between gap-3">
+    <h3
+      class:list={[
+        "font-semibold text-gray-900 dark:text-gray-100 group-hover:underline",
+        isFeatured ? "text-lg" : "text-base",
+      ]}
+    >
+      {repo.name}
+    </h3>
+    <div class="flex items-center gap-2 shrink-0">
+      {
+        repo.stars > 0 && (
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            &#9733; {repo.stars}
+          </span>
+        )
+      }
+      {
+        isFeatured && featured && (
+          <ProjectBadge language={null} active={featured.active} lang={lang} />
+        )
+      }
+    </div>
+  </div>
+
+  <p
+    class:list={[
+      "mt-2 text-gray-600 dark:text-gray-400",
+      isFeatured ? "text-sm" : "text-sm line-clamp-1",
+    ]}
+  >
+    {description}
+  </p>
+
+  {
+    isFeatured && featured && featured.highlights[lang].length > 0 && (
+      <div class="mt-3">
+        <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+          {t("projects.highlights")}
+        </p>
+        <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-0.5">
+          {featured.highlights[lang].map((h) => (
+            <li>{h}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <div class="mt-3 flex items-center gap-2 flex-wrap">
+    <ProjectBadge language={repo.language} lang={lang} />
+    {
+      isFeatured &&
+        featured &&
+        featured.topics.map((topic) => <Tag label={topic} />)
+    }
+  </div>
+</a>
