@@ -47,7 +47,13 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            class:list={[
+              "transition-colors",
+              Astro.url.pathname === link.href ||
+              Astro.url.pathname === link.href.replace(/\/$/, "")
+                ? "text-orange-500 dark:text-orange-500 font-medium border-b-2 border-orange-500"
+                : "text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500",
+            ]}
           >
             {link.label}
           </a>
