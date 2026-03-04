@@ -1,0 +1,36 @@
+---
+import type { Lang } from "@/i18n/ui";
+import type { FeaturedProjectDTO } from "@/lib/types/dto";
+import { useTranslations } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+
+interface Props {
+  lang: Lang;
+  projects: FeaturedProjectDTO[];
+}
+
+const { lang, projects } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="mx-auto max-w-5xl px-4 py-16">
+  <SectionTitle text={t("projects.label.featured")} />
+  <ProjectGrid variant="featured">
+    {
+      projects.map((repo) => (
+        <ProjectCard repo={repo} lang={lang} variant="featured" />
+      ))
+    }
+  </ProjectGrid>
+  <div class="mt-8 text-center">
+    <a
+      href={getRelativeLocaleUrl(lang, "/projects")}
+      class="text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors"
+    >
+      {t("projects.viewAll")} &rarr;
+    </a>
+  </div>
+</section>

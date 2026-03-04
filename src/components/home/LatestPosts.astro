@@ -1,0 +1,37 @@
+---
+import type { Lang } from "@/i18n/ui";
+import type { PostSummaryDTO } from "@/lib/types/dto";
+import { useTranslations } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import PostCard from "@/components/blog/PostCard.astro";
+
+interface Props {
+  lang: Lang;
+  posts: PostSummaryDTO[];
+}
+
+const { lang, posts } = Astro.props;
+const t = useTranslations(lang);
+---
+
+{
+  posts.length > 0 && (
+    <section class="mx-auto max-w-3xl px-4 py-16">
+      <SectionTitle text={t("blog.title")} />
+      <div class="flex flex-col gap-6">
+        {posts.map((post) => (
+          <PostCard post={post} lang={lang} />
+        ))}
+      </div>
+      <div class="mt-8 text-center">
+        <a
+          href={getRelativeLocaleUrl(lang, "/blog")}
+          class="text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors"
+        >
+          {t("blog.readMore")} &rarr;
+        </a>
+      </div>
+    </section>
+  )
+}
