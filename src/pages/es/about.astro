@@ -1,0 +1,187 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import Tag from "@/components/shared/Tag.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("es");
+
+const skills = {
+  [t("about.skills.languages")]: ["C#", "Python", "PHP", "SQL"],
+  [t("about.skills.frameworks")]: [
+    ".NET",
+    "FastAPI",
+    "Laravel",
+    "Angular",
+    "React",
+  ],
+  [t("about.skills.databases")]: ["SQL Server", "Oracle"],
+  [t("about.skills.cloud")]: ["Azure", "GCP", "Azure DevOps", "CI/CD", "Git"],
+  [t("about.skills.data")]: [
+    "ETL",
+    "Data Warehousing",
+    "FAISS",
+    "Web Scraping",
+  ],
+  [t("about.skills.aiml")]: [
+    "LangGraph",
+    "RAG",
+    "OpenAI",
+    "Claude",
+    "Streamlit",
+  ],
+  [t("about.skills.practices")]: [
+    "TDD",
+    "REST APIs",
+    "Database Design",
+    "Agile",
+  ],
+};
+
+const experience = [
+  {
+    title: "Desarrollador Intermedio (Optimizely y Umbraco)",
+    company: "Nexer Group S.A.S",
+    location: "Medell\u00EDn, Colombia",
+    period: "Feb 2023 - Presente",
+    description:
+      "Desarrollador fullstack enfocado en backend, construyendo plataformas de e-commerce, sitios corporativos y soluciones CMS headless para clientes B2B en Optimizely y Umbraco.",
+  },
+  {
+    title: "Ingeniero de Datos y Anal\u00EDtica",
+    company: "Manar (ahora Datecsa)",
+    location: "Medell\u00EDn, Colombia",
+    period: "Feb 2020 - Feb 2023",
+    description:
+      "Desarrollador y consultor entregando soluciones de ingenier\u00EDa de datos y BI para clientes empresariales, integrando datos de Maximo, JD Edwards, SAP y plataformas similares.",
+  },
+  {
+    title: "Administrador de Bases de Datos",
+    company: "VICO",
+    location: "Medell\u00EDn, Colombia",
+    period: "Ago 2018 - Feb 2020",
+    description:
+      "Desarrollador backend evolucionando hacia un rol enfocado en datos, construyendo funcionalidades core de la plataforma e infraestructura de anal\u00EDtica para una startup en crecimiento.",
+  },
+];
+
+const education = [
+  {
+    degree: "Maestr\u00EDa en Ciencia de Datos",
+    institution:
+      "Universidad Pontificia Bolivariana \u2014 Medell\u00EDn, Colombia",
+    period: "En progreso",
+    detail:
+      "Enfoque: NLP, aprendizaje autom\u00E1tico, aplicaciones basadas en LLMs",
+  },
+];
+
+const certifications = ["Optimizely Certified Developer"];
+---
+
+<BaseLayout
+  title={t("about.title")}
+  description={t("about.description")}
+  lang="es"
+>
+  <section class="mx-auto max-w-3xl px-4 py-20">
+    <h1 class="text-4xl font-bold mb-12 text-gray-900 dark:text-gray-100">
+      {t("about.title")}
+    </h1>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.bio")} />
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        {t("about.bio.text")}
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.experience")} />
+      <div class="space-y-8">
+        {
+          experience.map((job) => (
+            <div class="border-l-2 border-orange-600 dark:border-orange-500 pl-4">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                  {job.title}
+                </h3>
+                <span class="text-sm text-gray-500 dark:text-gray-500 shrink-0">
+                  {job.period}
+                </span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {job.company} &mdash; {job.location}
+              </p>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {job.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.skills")} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          Object.entries(skills).map(([category, items]) => (
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
+                {category}
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {items.map((skill) => (
+                  <Tag label={skill} />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.education")} />
+      <div class="space-y-6">
+        {
+          education.map((entry) => (
+            <div class="border-l-2 border-orange-600 dark:border-orange-500 pl-4">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                  {entry.degree}
+                </h3>
+                <span class="text-sm text-orange-600 dark:text-orange-500 font-medium shrink-0">
+                  {entry.period}
+                </span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {entry.institution}
+              </p>
+              {entry.detail && (
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                  {entry.detail}
+                </p>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <SectionTitle text={t("about.certifications")} />
+      <ul class="space-y-2">
+        {
+          certifications.map((cert) => (
+            <li class="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-orange-600 dark:bg-orange-500 shrink-0" />
+              {cert}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
