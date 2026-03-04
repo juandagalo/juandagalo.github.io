@@ -27,16 +27,16 @@ const featured = isFeatured ? (repo as FeaturedProjectDTO) : null;
     "group block rounded-lg border transition-colors",
     "bg-white dark:bg-gray-900",
     "border-gray-200 dark:border-gray-800",
-    "hover:border-gray-400 dark:hover:border-gray-600",
+    "hover:border-orange-600 dark:hover:border-orange-500",
     isFeatured
-      ? "p-6 border-l-4 border-l-gray-900 dark:border-l-gray-100"
+      ? "p-6 border-l-4 border-l-orange-600 dark:border-l-orange-500"
       : "p-4",
   ]}
 >
   <div class="flex items-start justify-between gap-3">
     <h3
       class:list={[
-        "font-semibold text-gray-900 dark:text-gray-100 group-hover:underline",
+        "font-semibold text-gray-900 dark:text-gray-100 group-hover:underline decoration-orange-500",
         isFeatured ? "text-lg" : "text-base",
       ]}
     >
