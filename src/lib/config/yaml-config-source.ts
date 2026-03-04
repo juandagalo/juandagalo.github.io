@@ -1,13 +1,13 @@
 import yaml from "js-yaml";
 import { readFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import type { FeaturedRepoConfig } from "@/lib/types/config";
 import type { ConfigSource } from "@/lib/config/config-source";
 
 export function createYamlConfigSource(filePath?: string): ConfigSource {
-  const defaultPath = fileURLToPath(
-    new URL("../../data/featured-repos.yaml", import.meta.url),
-  );
+  // import.meta.url breaks after Astro bundles code into dist/chunks/,
+  // so we use process.cwd() which is always the project root at build time.
+  const defaultPath = join(process.cwd(), "src", "data", "featured-repos.yaml");
   const path = filePath ?? defaultPath;
 
   return {
