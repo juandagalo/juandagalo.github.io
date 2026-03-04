@@ -1,0 +1,116 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import Tag from "@/components/shared/Tag.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+
+const skills = {
+  [t("about.skills.aiml")]: [
+    "Python",
+    "LangChain",
+    "FAISS",
+    "OpenAI",
+    "Hugging Face",
+    "scikit-learn",
+    "Pandas",
+    "NumPy",
+  ],
+  [t("about.skills.data")]: [
+    "SQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Apache Airflow",
+    "dbt",
+    "Snowflake",
+    "ETL Pipelines",
+  ],
+  [t("about.skills.web")]: [
+    "TypeScript",
+    "Astro",
+    "React",
+    "Tailwind CSS",
+    "Node.js",
+    "REST APIs",
+    "GraphQL",
+  ],
+  [t("about.skills.tools")]: [
+    "Git",
+    "Docker",
+    "GitHub Actions",
+    "Linux",
+    "VS Code",
+    "Vitest",
+    "ESLint",
+  ],
+};
+
+const education = [
+  {
+    degree: "B.S. Computer Science",
+    institution: "Placeholder University",
+    period: "2018 - 2022",
+  },
+];
+---
+
+<BaseLayout
+  title={t("about.title")}
+  description={t("about.description")}
+  lang="en"
+>
+  <section class="mx-auto max-w-3xl px-4 py-20">
+    <h1 class="text-4xl font-bold mb-12 text-gray-900 dark:text-gray-100">
+      {t("about.title")}
+    </h1>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.bio")} />
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        {t("about.bio.text")}
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <SectionTitle text={t("about.skills")} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          Object.entries(skills).map(([category, items]) => (
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
+                {category}
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {items.map((skill) => (
+                  <Tag label={skill} />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <SectionTitle text={t("about.education")} />
+      <div class="space-y-6">
+        {
+          education.map((entry) => (
+            <div class="border-l-2 border-orange-600 dark:border-orange-500 pl-4">
+              <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                {entry.degree}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {entry.institution}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-500">
+                {entry.period}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
