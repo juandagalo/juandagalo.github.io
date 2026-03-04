@@ -17,7 +17,7 @@ export const ui = {
     "hero.name": "Juan Daniel Garcia Lopez",
     "hero.tagline": "Backend Developer | C#, .NET, Python",
     "hero.cta.projects": "View my work",
-    "hero.cta.contact": "Get in touch",
+    "hero.cta.blog": "Read the blog",
     "projects.title": "Projects",
     "projects.description":
       "A collection of my open-source projects and experiments.",
@@ -72,7 +72,7 @@ export const ui = {
     "hero.name": "Juan Daniel Garcia Lopez",
     "hero.tagline": "Desarrollador Backend | C#, .NET, Python",
     "hero.cta.projects": "Ver mi trabajo",
-    "hero.cta.contact": "Contáctame",
+    "hero.cta.blog": "Leer el blog",
     "projects.title": "Proyectos",
     "projects.description":
       "Una colección de mis proyectos de código abierto y experimentos.",
