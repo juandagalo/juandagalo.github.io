@@ -1,0 +1,27 @@
+---
+title: "FTI Pipeline Lessons: Feature, Training, Inference"
+description: "Lessons learned from structuring ML projects using the Feature-Training-Inference pipeline pattern."
+date: 2025-07-01
+tags: ["ml", "architecture", "python"]
+draft: true
+featured: false
+lang: "en"
+---
+
+# FTI Pipeline Lessons
+
+The Feature-Training-Inference (FTI) pattern is a clean way to structure machine learning projects. Here's what I learned applying it.
+
+## The Pattern
+
+- **Feature pipeline** -- transforms raw data into features stored in a feature store
+- **Training pipeline** -- reads features, trains a model, stores it in a model registry
+- **Inference pipeline** -- loads the model and features to serve predictions
+
+## What Worked
+
+Separating concerns made each pipeline independently testable and deployable. Changes to feature engineering didn't require retraining immediately.
+
+## What Didn't
+
+The initial setup overhead is significant for small projects. Consider whether the complexity is justified for your use case.
