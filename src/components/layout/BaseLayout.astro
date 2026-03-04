@@ -3,6 +3,7 @@ import { ClientRouter } from "astro:transitions";
 import type { Lang } from "@/i18n/ui";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import ProjectsSkeleton from "@/components/shared/ProjectsSkeleton.astro";
 import "@/styles/global.css";
 
 interface Props {
@@ -65,5 +66,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer lang={lang} />
+    <ProjectsSkeleton />
   </body>
 </html>
