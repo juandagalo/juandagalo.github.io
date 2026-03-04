@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+import { useTranslations } from "@/i18n/utils";
+import { getProjectData } from "@/lib/github";
+
+const t = useTranslations("en");
+const { featured, other } = await getProjectData();
+---
+
+<BaseLayout
+  title={t("projects.title")}
+  description={t("projects.description")}
+  lang="en"
+>
+  <section class="mx-auto max-w-5xl px-4 py-20">
+    <h1 class="text-4xl font-bold mb-12 text-gray-900 dark:text-gray-100">
+      {t("projects.title")}
+    </h1>
+
+    {
+      featured.length > 0 && (
+        <>
+          <SectionTitle text={t("projects.label.featured")} />
+          <ProjectGrid variant="featured">
+            {featured.map((repo) => (
+              <ProjectCard repo={repo} lang="en" variant="featured" />
+            ))}
+          </ProjectGrid>
+        </>
+      )
+    }
+
+    {
+      other.length > 0 && (
+        <div class="mt-16">
+          <SectionTitle text={t("projects.label.other")} />
+          <ProjectGrid variant="compact">
+            {other.map((repo) => (
+              <ProjectCard repo={repo} lang="en" variant="compact" />
+            ))}
+          </ProjectGrid>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
