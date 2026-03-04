@@ -1,14 +1,36 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "@/components/layout/BaseLayout.astro";
+import Hero from "@/components/home/Hero.astro";
+import FeaturedProjects from "@/components/home/FeaturedProjects.astro";
+import LatestPosts from "@/components/home/LatestPosts.astro";
 import { useTranslations } from "@/i18n/utils";
+import { getProjectData } from "@/lib/github";
+import { calculateReadingTime } from "@/lib/reading-time";
+import type { PostSummaryDTO } from "@/lib/types/dto";
 
 const t = useTranslations("en");
+const { featured } = await getProjectData();
+
+const posts = await getCollection("blog");
+const latestPosts: PostSummaryDTO[] = posts
+  .filter((p) => p.data.lang === "en")
+  .filter((p) => (import.meta.env.PROD ? !p.data.draft : true))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3)
+  .map((p) => ({
+    id: p.id,
+    slug: p.id.replace(/^en\//, ""),
+    title: p.data.title,
+    description: p.data.description,
+    date: p.data.date,
+    tags: p.data.tags,
+    readingTime: calculateReadingTime(p.body ?? ""),
+  }));
 ---
 
 <BaseLayout title={t("hero.name")} description={t("hero.tagline")} lang="en">
-  <section class="mx-auto max-w-5xl px-4 py-20">
-    <p class="text-lg text-gray-500">{t("hero.greeting")}</p>
-    <h1 class="text-4xl font-bold mt-2">{t("hero.name")}</h1>
-    <p class="text-xl text-gray-600 mt-4">{t("hero.tagline")}</p>
-  </section>
+  <Hero lang="en" />
+  <FeaturedProjects lang="en" projects={featured} />
+  <LatestPosts lang="en" posts={latestPosts} />
 </BaseLayout>
