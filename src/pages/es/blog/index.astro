@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import PostCard from "@/components/blog/PostCard.astro";
+import { useTranslations } from "@/i18n/utils";
+import { calculateReadingTime } from "@/lib/reading-time";
+import type { PostSummaryDTO } from "@/lib/types/dto";
+
+const t = useTranslations("es");
+
+const posts = await getCollection("blog");
+
+const filtered = posts
+  .filter((post) => post.data.lang === "es")
+  .filter((post) => (import.meta.env.PROD ? !post.data.draft : true))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const summaries: PostSummaryDTO[] = filtered.map((post) => ({
+  id: post.id,
+  slug: post.id.replace(/^es\//, ""),
+  title: post.data.title,
+  description: post.data.description,
+  date: post.data.date,
+  tags: post.data.tags,
+  readingTime: calculateReadingTime(post.body ?? ""),
+}));
+---
+
+<BaseLayout
+  title={t("blog.title")}
+  description={t("blog.description")}
+  lang="es"
+>
+  <section class="mx-auto max-w-3xl px-4 py-20">
+    <h1 class="text-4xl font-bold mb-12 text-gray-900 dark:text-gray-100">
+      {t("blog.title")}
+    </h1>
+
+    {
+      summaries.length > 0 ? (
+        <div class="flex flex-col gap-6">
+          {summaries.map((post) => (
+            <PostCard post={post} lang="es" />
+          ))}
+        </div>
+      ) : (
+        <p class="text-gray-500 dark:text-gray-400">{t("blog.noPosts")}</p>
+      )
+    }
+  </section>
+</BaseLayout>

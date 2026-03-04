@@ -1,0 +1,61 @@
+---
+import type { PostSummaryDTO } from "@/lib/types/dto";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Tag from "@/components/shared/Tag.astro";
+
+interface Props {
+  post: PostSummaryDTO;
+  lang: Lang;
+}
+
+const { post, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const formattedDate = post.date.toLocaleDateString(
+  lang === "es" ? "es-ES" : "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  },
+);
+
+const postUrl = getRelativeLocaleUrl(lang, `/blog/${post.slug}`);
+---
+
+<a
+  href={postUrl}
+  class="group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-gray-400 dark:hover:border-gray-600 transition-colors"
+>
+  <h3
+    class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:underline"
+  >
+    {post.title}
+  </h3>
+
+  <div
+    class="mt-2 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400"
+  >
+    <time datetime={post.date.toISOString()}>
+      {formattedDate}
+    </time>
+    <span aria-hidden="true">--</span>
+    <span>{post.readingTime} {t("blog.readingTime")}</span>
+  </div>
+
+  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+    {post.description}
+  </p>
+
+  {
+    post.tags.length > 0 && (
+      <div class="mt-3 flex gap-2 flex-wrap">
+        {post.tags.map((tag) => (
+          <Tag label={tag} />
+        ))}
+      </div>
+    )
+  }
+</a>

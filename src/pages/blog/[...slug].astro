@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import PostLayout from "@/components/blog/PostLayout.astro";
+import { calculateReadingTime } from "@/lib/reading-time";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts
+    .filter((post) => post.data.lang === "en")
+    .filter((post) => (import.meta.env.PROD ? !post.data.draft : true))
+    .map((post) => ({
+      params: { slug: post.id.replace(/^en\//, "") },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const readingTime = calculateReadingTime(post.body ?? "");
+---
+
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+  readingTime={readingTime}
+  lang="en"
+>
+  <Content />
+</PostLayout>
